@@ -9,9 +9,9 @@ import pickle
 from unidecode import unidecode
 import streamlit as st
 
-df = pd.read_parquet("search_ciap_v3/text.parquet", engine="pyarrow")
+df = pd.read_parquet("text.parquet", engine="pyarrow")
 
-with open('search_ciap_v3/CIAP_CID_indexed_data.pkl', 'rb') as pickle_file:
+with open('CIAP_CID_indexed_data.pkl', 'rb') as pickle_file:
     bm25 = pickle.load(pickle_file)
 
 
