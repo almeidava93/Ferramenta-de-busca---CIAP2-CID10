@@ -1,2 +1,3 @@
+--upgrade pip
 git+ssh://git@github.com/dorianbrown/rank_bm25.git
 rank_bm25
