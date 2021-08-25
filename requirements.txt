@@ -1,2 +1,2 @@
-
+unidecode
 rank_bm25
