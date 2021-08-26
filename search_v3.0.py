@@ -14,7 +14,6 @@ from datetime import datetime
 
 @st.cache
 def loading_data():
-    st.write('Data loaded.')
     df = pd.read_parquet("text.parquet", engine="pyarrow")
     ciap_list = list(df[['CIAP2_Código1', 'titulo original']].agg(" | ".join, axis=1).drop_duplicates())
     with open('CIAP_CID_indexed_data.pkl', 'rb') as pickle_file:
