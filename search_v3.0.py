@@ -8,18 +8,20 @@ import time
 import pickle
 from unidecode import unidecode
 import streamlit as st
-
-df = pd.read_parquet("text.parquet", engine="pyarrow")
-ciap_list = list(df[['CIAP2_Código1', 'titulo original']].agg(" | ".join, axis=1).drop_duplicates())
-
-
-with open('CIAP_CID_indexed_data.pkl', 'rb') as pickle_file:
-    bm25 = pickle.load(pickle_file)
-
-#Configuring database
 from google.cloud import firestore
 import uuid
 from datetime import datetime
+
+@st.cache
+def loading_data():
+    st.write('Data loaded.')
+    df = pd.read_parquet("text.parquet", engine="pyarrow")
+    ciap_list = list(df[['CIAP2_Código1', 'titulo original']].agg(" | ".join, axis=1).drop_duplicates())
+    with open('CIAP_CID_indexed_data.pkl', 'rb') as pickle_file:
+        bm25 = pickle.load(pickle_file)
+
+loading_data()
+
 
 #Authenticate to Firestore with the JSON account key.
 db = firestore.Client.from_service_account_json("firestore_key.json")
