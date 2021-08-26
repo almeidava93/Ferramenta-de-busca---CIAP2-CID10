@@ -44,10 +44,41 @@ else:
     from google.cloud import firestore
     import uuid
     from datetime import datetime
+    import json
+    import requests
+    from requests.exceptions import HTTPError
 
-    #Authenticate to Firestore with the JSON account key.
-    db = firestore.Client.from_service_account_json("firestore_key.json")
+    FIREBASE_REST_API = "https://identitytoolkit.googleapis.com/v1/accounts"
 
+    # Use the google verify password REST api to authenticate and generate user tokens
+    def sign_in_with_email_and_password(api_key, email, password):
+        request_url = "%s:signInWithPassword?key=%s" % (FIREBASE_REST_API, api_key)
+        headers = {"content-type": "application/json; charset=UTF-8"}
+        data = json.dumps({"email": email, "password": password, "returnSecureToken": True})
+
+        resp = requests.post(request_ref, headers=headers, data=data)
+        # Check for errors
+        try:
+            resp.raise_for_status()
+        except HTTPError as e:
+            raise HTTPError(e, resp.text)
+
+        return resp.json()
+    
+    #Building the credential object
+    from google.oauth2.credentials import Credentials
+
+    # We use the sign_in_with_email_and_password function from https://gist.github.com/Bob-Thomas/49fcd13bbd890ba9031cc76be46ce446
+    response = sign_in_with_email_and_password("apiKey", st.secrets['db_email'], st.secrets['db_password'])
+    # Use google.oauth2.credentials and the response object to create the correct user credentials
+    creds = Credentials(response['idToken'], response['refreshToken'])
+    
+    #Connecting to database
+    from google.cloud.firestore import Client
+
+    # using the credentials build in https://gist.github.com/Bob-Thomas/4d9370c6b5432fb5150d3618e0ae71ba
+    db = Client("busca-ciap2", creds)
+    
     #Saving search history
     ##Relevant variables:
     search_id = 'search_id_' + str(uuid.uuid4()) #id for document name
