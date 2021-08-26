@@ -91,3 +91,7 @@ with st.expander('Não encontrou o que buscava?'):
                 'expected code': code_expected,
                 'sugestion': sugestion,
             })
+            text = None
+            code_expected = None
+            sugestion = None
+            
