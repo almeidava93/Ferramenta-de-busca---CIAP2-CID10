@@ -40,40 +40,34 @@ else:
     st.text(f'Searched {n_records} records in {search_time} seconds \n')
     selected_code = st.radio('Códigos encontrados:', results, index=0, key=None, help='help arg')
 
-    #selected_code2 = st.multiselect('Códigos encontrados:', results, default=None, help='help arg')
+    #Configuring database
+    from google.cloud import firestore
+    import uuid
+    from datetime import datetime
 
-    #st.write(selected_code)
-    #st.write(selected_code2)
+    #Authenticate to Firestore with the JSON account key.
+    db = firestore.Client.from_service_account_json("firestore_key.json")
 
+    #Saving search history
+    ##Relevant variables:
+    search_id = 'search_id_' + str(uuid.uuid4()) #id for document name
+    datetime = datetime.now() #date and time of search
     
-#Configuring database
-from google.cloud import firestore
-import uuid
-from datetime import datetime
+    #input -> text input for code search
+    #search_time -> time spent on search
+    #n_records -> number of records searched
+    #n_results -> number of results shown
+    #selected_code -> selected code in radio button
+    
 
-#Authenticate to Firestore with the JSON account key.
-db = firestore.Client.from_service_account_json("firestore_key.json")
-
-#Saving search history
-##Relevant variables:
-search_id = 'search_id_' + str(uuid.uuid4()) #id for document name
-datetime = datetime.now() #date and time of search
-"""
-input #text input for code search
-search_time #time spent on search
-n_records #number of records searched
-n_results #number of results shown
-selected_code #selected code in radio button
-"""
-
-##Saving data:
-doc_ref = db.collection('search_history').document(search_id)
-doc_ref.set({
-    'search id': search_id,
-    'text input': input,
-    'timestamp': datetime,
-    'search time': search_time,
-    'n records searched': n_records,
-    'n results shown': n_results,
-    'selected code': selected_code
-})
+    ##Saving data:
+    doc_ref = db.collection('search_history').document(search_id)
+    doc_ref.set({
+        'search id': search_id,
+        'text input': input,
+        'timestamp': datetime,
+        'search time': search_time,
+        'n records searched': n_records,
+        'n results shown': n_results,
+        'selected code': selected_code
+    })
