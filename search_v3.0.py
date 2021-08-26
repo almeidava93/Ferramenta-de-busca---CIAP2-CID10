@@ -56,7 +56,7 @@ else:
         headers = {"content-type": "application/json; charset=UTF-8"}
         data = json.dumps({"email": email, "password": password, "returnSecureToken": True})
 
-        resp = requests.post(request_ref, headers=headers, data=data)
+        resp = requests.post(request_url, headers=headers, data=data)
         # Check for errors
         try:
             resp.raise_for_status()
