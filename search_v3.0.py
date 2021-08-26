@@ -49,6 +49,7 @@ else:
 #Configuring database
 from google.cloud import firestore
 import uuid
+from datetime import datetime
 
 #Authenticate to Firestore with the JSON account key.
 db = firestore.Client.from_service_account_json("firestore_key.json")
@@ -56,9 +57,9 @@ db = firestore.Client.from_service_account_json("firestore_key.json")
 #Saving search history
 ##Relevant variables:
 search_id = 'search_id_' + str(uuid.uuid4()) #id for document name
+datetime = datetime.now() #date and time of search
 """
 input #text input for code search
-datetime #date and time of search
 search_time #time spent on search
 n_records #number of records searched
 n_results #number of results shown
