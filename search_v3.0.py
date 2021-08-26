@@ -72,8 +72,8 @@ else:
         'selected code': selected_code
     })
 
-with st.container():
-    with st.form('Não encontrou o que busca?'):
+with st.expander('Não encontrou o que buscava?'):
+    with st.form():
         st.write('Digite abaixo a expressão que representa a condição que queria encontrar e o código que esperava encontrar. Vamos usar essas informações para melhorar a sua experiência :)')
         text = st.text_input('Termo buscado:')       
         code_expected = st.multiselect('Código(s) esperado(s):', ciap_list)
