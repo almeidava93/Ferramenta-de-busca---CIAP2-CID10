@@ -69,7 +69,7 @@ else:
     from google.oauth2.credentials import Credentials
 
     # We use the sign_in_with_email_and_password function from https://gist.github.com/Bob-Thomas/49fcd13bbd890ba9031cc76be46ce446
-    response = sign_in_with_email_and_password("apiKey", st.secrets['db_email'], st.secrets['db_password'])
+    response = sign_in_with_email_and_password(st.secrets['db_api_key'], st.secrets['db_email'], st.secrets['db_password'])
     # Use google.oauth2.credentials and the response object to create the correct user credentials
     creds = Credentials(response['idToken'], response['refreshToken'])
     
