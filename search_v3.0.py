@@ -27,7 +27,8 @@ db = firestore.Client.from_service_account_json("firestore_key.json")
 st.title('Codificação CIAP2')
 with st.container():
     st.header('Ferramenta de busca')
-    st.write('Digite abaixo a condição clínica que deseja codificar e nós encontraremos para você os melhores códigos CIAP2.')
+    search_history_counter = len(db.collection('search_history').stream())
+    st.write('Digite abaixo a condição clínica que deseja codificar e nós encontraremos para você os melhores códigos CIAP2. Já realizamos {search_history_counter} buscas desde o início.')
     input = st.text_input('Condição clínica ou motivo de consulta:')
     n_results = st.number_input('Quantos códigos devemos mostrar?', value = 5, min_value=1, max_value=20, step=1, key=None, help='help arg')
 
