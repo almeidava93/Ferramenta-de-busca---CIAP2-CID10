@@ -18,11 +18,11 @@ def app():
     def search_counter():
         search_history_list = [x for x in Database.SEARCH_HISTORY]
         return len(search_history_list)
-    search_counter = search_counter()
+    x = search_counter()
 
     with st.container():
         st.header('Ferramenta de busca')
-        st.write(f'Digite abaixo a condição clínica que deseja codificar e nós encontraremos para você os melhores códigos CIAP2. Já realizamos {search_counter} buscas desde o início.')
+        st.write(f'Digite abaixo a condição clínica que deseja codificar e nós encontraremos para você os melhores códigos CIAP2. Já realizamos {x} buscas desde o início.')
         input = st.text_input('Condição clínica ou motivo de consulta:')
         n_results = st.number_input('Quantos códigos devemos mostrar?', value = 5, min_value=1, max_value=20, step=1, key=None, help='help arg')
 
