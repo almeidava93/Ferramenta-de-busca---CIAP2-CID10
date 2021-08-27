@@ -10,7 +10,7 @@ def load_data():
     db = firestore.Client.from_service_account_json('firestore_key.json')
     with open('CIAP_CID_indexed_data.pkl', 'rb') as pickle_file:
         bm25 = pickle.load(pickle_file)
-    return df, ciap_list, db, search_counter, bm25
+    return df, ciap_list, db, bm25
 
 df, ciap_list, db, search_counter, bm25 = load_data()
 
