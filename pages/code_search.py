@@ -15,13 +15,11 @@ def app():
     db = Database.DB
     df = Database.TESAURO_DF
 
-    @st.cache
     def search_counter():
-        search_history = db.collection('search_history').stream()
-        search_history_list = [x for x in search_history]
+        search_history_list = [x for x in Database.SEARCH_HISTORY]
         return len(search_history_list)
     search_counter = search_counter()
-    
+
     with st.container():
         st.header('Ferramenta de busca')
         st.write(f'Digite abaixo a condição clínica que deseja codificar e nós encontraremos para você os melhores códigos CIAP2. Já realizamos {search_counter} buscas desde o início.')
