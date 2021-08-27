@@ -16,7 +16,7 @@ def app():
     df = Database.TESAURO_DF
 
     search_history = db.collection('search_history').stream()
-    search_history_list = [x for x in Database.search_history]
+    search_history_list = [x for x in search_history]
     x = len(search_history_list)
 
     with st.container():
