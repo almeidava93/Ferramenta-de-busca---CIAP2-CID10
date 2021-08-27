@@ -12,7 +12,7 @@ def load_data():
         bm25 = pickle.load(pickle_file)
     return df, ciap_list, db, bm25
 
-df, ciap_list, db, search_counter, bm25 = load_data()
+df, ciap_list, db, bm25 = load_data()
 
 class Database():
     TESAURO_DF = df
