@@ -15,13 +15,9 @@ def app():
     db = Database.DB
     df = Database.TESAURO_DF
 
-    search_history = db.collection('search_history').stream()
-    search_history_list = [x for x in search_history]
-    x = len(search_history_list)
-
     with st.container():
         st.header('Ferramenta de busca')
-        st.write(f'Digite abaixo a condição clínica que deseja codificar e nós encontraremos para você os melhores códigos CIAP2. Já realizamos {x} buscas desde o início.')
+        st.write(f'Digite abaixo a condição clínica que deseja codificar e nós encontraremos para você os melhores códigos CIAP2.')
         input = st.text_input('Condição clínica ou motivo de consulta:')
         n_results = st.number_input('Quantos códigos devemos mostrar?', value = 5, min_value=1, max_value=20, step=1, key=None, help='help arg')
 
