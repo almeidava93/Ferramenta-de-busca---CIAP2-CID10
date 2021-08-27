@@ -3,7 +3,6 @@ from google.cloud import firestore
 import pickle
 import streamlit as st
 
-@st.cache
 def load_data():
     df = pd.read_parquet("text.parquet", engine="pyarrow")
     ciap_list = list(df[['CIAP2_Código1', 'titulo original']].agg(" | ".join, axis=1).drop_duplicates())
