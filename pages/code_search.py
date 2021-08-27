@@ -15,10 +15,9 @@ def app():
     db = Database.DB
     df = Database.TESAURO_DF
 
-    def search_counter():
-        search_history_list = [x for x in Database.SEARCH_HISTORY]
-        return len(search_history_list)
-    x = search_counter()
+    search_history = db.collection('search_history').stream()
+    search_history_list = [x for x in Database.search_history]
+    x = len(search_history_list)
 
     with st.container():
         st.header('Ferramenta de busca')
