@@ -30,3 +30,4 @@ def app():
                 text = None
                 code_expected = None
                 sugestion = None
+            st.write(code_expected)
