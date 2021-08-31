@@ -35,3 +35,4 @@ class Database():
     N_RECORDS = len(TESAURO_DF)
     BM25 = bm25
     SEARCH_HISTORY = search_history
+    SERVICE_ACCOUNT_INFO = service_account_info

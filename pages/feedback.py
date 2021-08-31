@@ -7,7 +7,7 @@ from database import Database
 
 def app():
     ciap_list = Database.CIAP_LIST
-    db = firestore.Client.from_service_account_json("firestore_key.json")
+    db = Database.DB
     st.header('Não encontrou o que buscava?')
     with st.form('Não encontrou o que buscava?'):
             st.write('Digite abaixo a expressão que representa a condição que queria encontrar e o código que esperava encontrar. Vamos usar essas informações para melhorar a sua experiência :)')
