@@ -12,8 +12,9 @@ from database import Database
 
 
 def app():
-    db = Database.DB
-    df = Database.TESAURO_DF
+    DB = Database()
+    db = DB.DB
+    df = DB.TESAURO_DF
 
     with st.container():
         st.header('Ferramenta de busca')
