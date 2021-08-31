@@ -14,7 +14,6 @@ def app():
             st.write('Digite abaixo a expressão que representa a condição que queria encontrar e o código que esperava encontrar. Vamos usar essas informações para melhorar a sua experiência :)')
             text = st.text_input('Termo buscado:')       
             code_expected = st.multiselect('Código(s) esperado(s):', ciap_list)
-            st.write(code_expected)
             sugestion = st.text_input('Tem alguma outra sugestão para nos dar?')
             submitted = st.form_submit_button("Enviar")
             feedback_id = 'feedback_id_' + str(uuid.uuid4()) #id for document name
