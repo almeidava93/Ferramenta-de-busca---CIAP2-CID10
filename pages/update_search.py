@@ -3,6 +3,10 @@
 2. Acessar linha mais próxima da que se deseja adicionar
 3. Copiar essa linha e editar para colocar a expressão que se deseja
 4. Gerar novo índice bm25 para busca
+5. Salvar arquivos na base de dados
+6. Aprender a acessar esses arquivos da base de dados para ler, editar e salvar
+https://www.google.com/search?q=access+firebase+storage+python&rlz=1C5CHFA_enBR918BR918&biw=1440&bih=821&sxsrf=AOaemvKHeieZm_rHBGB2QNpKe0neBsFZYg%3A1630542173952&ei=XRkwYfylOerQ1sQP-6iN4Ag&oq=access+firebase+storage+python&gs_lcp=Cgdnd3Mtd2l6EAM6BwgAEEcQsAM6BQgAEMsBOgYIABAWEB46CAghEBYQHRAeSgQIQRgAUK4LWOkQYI4SaABwA3gBgAGDAogB2AmSAQUwLjQuM5gBAKABAcgBCMABAQ&sclient=gws-wiz&ved=0ahUKEwi8yMb4gt_yAhVqqJUCHXtUA4wQ4dUDCA4&uact=5#kpvalbx=_YRkwYaPcFcjU1sQPgdmfoA049
+
 """
 
 import streamlit as st
