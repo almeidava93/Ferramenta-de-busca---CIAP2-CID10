@@ -4,3 +4,4 @@ streamlit
 google-cloud-firestore
 uuid
 datetime
+spacy
