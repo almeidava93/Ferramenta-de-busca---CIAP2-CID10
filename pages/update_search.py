@@ -86,8 +86,6 @@ def app():
         st.header('Atualização do tesauro')
         password = st.text_input('Para atualizar o tesauro, digite a senha de administrador', type='password')
         if password == st.secrets['update_search_password']:
-            pass
-        else:
             input = st.text_input('Condição clínica ou motivo de consulta:')
             n_results = st.number_input('Quantos códigos devemos mostrar?', value = 5, min_value=1, max_value=20, step=1, key=None, help='help arg')
             selected_code = search_code(input, n_results)
@@ -96,3 +94,5 @@ def app():
             if save_button:
                 update_search(new_description, selected_code)
                 st.success('A atualização foi realizada com sucesso!')
+        else:
+            pass
