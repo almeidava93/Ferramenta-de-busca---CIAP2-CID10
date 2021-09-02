@@ -7,3 +7,4 @@ datetime
 spacy
 firebase_admin
 pyrebase
+jwt
