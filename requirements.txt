@@ -5,3 +5,5 @@ google-cloud-firestore
 uuid
 datetime
 spacy
+firebase_admin
+pyrebase
