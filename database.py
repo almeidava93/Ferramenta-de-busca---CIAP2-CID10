@@ -83,7 +83,7 @@ search_code_data = firestore_query(field_paths=['text', '`text with special char
 
 
 #Função que gera o índice BM25 para a busca e atualiza o arquivo
-@st.cache
+@st.cache(ttl=300, show_spinner=True)
 def bm25_index(data = search_code_data['text']):
     #Launch the language object
     nlp = spacy.load("pt_core_news_lg")
