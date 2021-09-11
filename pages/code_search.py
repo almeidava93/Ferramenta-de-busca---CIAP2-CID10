@@ -28,19 +28,13 @@ def app():
     if input == "":
         pass
     else:
-        #Querying this index just requires a search input which has also been tokenized:
-        input = unidecode(input) #remove acentos e caracteres especiais
-        tokenized_query = input.lower().split(" ")
-
         t0 = time.time()
-        results = bm25.get_top_n(tokenized_query, df.text.values, n=n_results)
+        selected_code = search_code(input, n_results)
         t1 = time.time()
-        n_records = Database.N_RECORDS
-        results = [i for i in results]
+        n_records = len(search_code_data)
         search_time = round(t1-t0,3)
 
         st.text(f'Searched {n_records} records in {search_time} seconds \n')
-        selected_code = st.radio('Códigos encontrados:', results, index=0, key=None, help='help arg')
 
         #Saving search history
         ##Relevant variables:
