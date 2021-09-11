@@ -4,6 +4,8 @@ import pickle
 import streamlit as st
 from rank_bm25 import BM25Okapi
 import spacy
+from unidecode import unidecode
+
 
 
 #IMPORTANT VARIABLES TO BE USED
@@ -97,3 +99,16 @@ def bm25_index(data = search_code_data['text']):
     return bm25
 
 bm25 = bm25_index()
+
+#Função que retorna o código escolhido
+def search_code(input, n_results, data = search_code_data):
+    if input != "":
+        #Generate search index
+        #bm25 = bm25_index()
+        #Querying this index just requires a search input which has also been tokenized:
+        input = unidecode(input) #remove acentos e caracteres especiais
+        tokenized_query = input.lower().split(" ")
+        results = bm25.get_top_n(tokenized_query, data.text.values, n=n_results)
+        results = [i for i in results]
+        selected_code = st.radio('Esses são os códigos que encontramos. Selecione um para prosseguir.', results, index=0, help='Selecione um dos códigos para prosseguir.')
+        return selected_code

@@ -23,20 +23,6 @@ import uuid
 from database import *
 
 
-#Função que retorna o código escolhido
-def search_code(input, n_results, data = search_code_data):
-    if input != "":
-        #Generate search index
-        #bm25 = bm25_index()
-        #Querying this index just requires a search input which has also been tokenized:
-        input = unidecode(input) #remove acentos e caracteres especiais
-        tokenized_query = input.lower().split(" ")
-        results = bm25.get_top_n(tokenized_query, data.text.values, n=n_results)
-        results = [i for i in results]
-        selected_code = st.radio('Esses são os códigos que encontramos. Selecione um para prosseguir.', results, index=0, help='Selecione um dos códigos para prosseguir.')
-        return selected_code
-
-
 def where(collection_name='tesauro', field_path='`Termo Português`', op_string='==', firestore_client = firestore_client, value=None):
     #Função que retorna uma lista com os documentos de uma coleção no firebase conforme as condições de busca
     firestore_collection = firestore_client.collection(collection_name) #Acessa tesauro no firestore
