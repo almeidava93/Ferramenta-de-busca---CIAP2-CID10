@@ -10,6 +10,8 @@ import uuid
 from datetime import datetime as dt
 from database import Database
 
+#Custom packages
+from database import *
 
 def app():
     DB = Database()
@@ -30,7 +32,7 @@ def app():
         tokenized_query = input.lower().split(" ")
 
         t0 = time.time()
-        results = Database.BM25.get_top_n(tokenized_query, df.text.values, n=n_results)
+        results = bm25.get_top_n(tokenized_query, df.text.values, n=n_results)
         t1 = time.time()
         n_records = Database.N_RECORDS
         results = [i for i in results]
