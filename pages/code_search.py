@@ -12,7 +12,6 @@ from database import Database
 
 #Custom packages
 from database import *
-from update_search import *
 
 def app():
     DB = Database()
