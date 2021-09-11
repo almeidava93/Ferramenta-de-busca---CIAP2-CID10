@@ -66,7 +66,7 @@ def load():
   filtered_collection_dict = [doc.to_dict() for doc in filtered_collection] #Returns list of dictionaries 
   search_dataframe = pd.DataFrame.from_records(filtered_collection_dict) #Returns dataframe
 
-@st.cache(hash_funcs={firestore.Client: lambda _: None})
+@st.cache(hash_funcs={firestore.Client: lambda _: None}, ttl=300, show_spinner=True)
 def firestore_query(firestore_client = firestore_client, field_paths = [], collection = 'tesauro'):
   #Load dataframe for code search
   firestore_client = firestore.Client.from_service_account_info(service_account_info)
