@@ -84,7 +84,8 @@ def firestore_query(firestore_client = firestore_client, field_paths = [], colle
 
 #OTHER VARIABLES OF INTEREST
 search_code_data = firestore_query(field_paths=['text', '`text with special characters`'])
-
+ciap_df = firestore_query(field_paths=['`CIAP2_Código1`', '`titulo original`']).agg(" | ".join, axis=1).drop_duplicates()
+ciap_list = list(ciap_df)
 
 #Função que gera o índice BM25 para a busca e atualiza o arquivo
 @st.cache(ttl=300, show_spinner=True)

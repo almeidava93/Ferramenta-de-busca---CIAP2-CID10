@@ -3,12 +3,9 @@ import streamlit as st
 from datetime import datetime as dt
 import uuid
 from google.cloud import firestore
-from database import Database
+from database import *
 
 def app():
-    DB = Database()
-    ciap_list = DB.CIAP_LIST
-    db = DB.DB
     st.header('Não encontrou o que buscava?')
     with st.form('Não encontrou o que buscava?'):
             st.write('Digite abaixo a expressão que representa a condição que queria encontrar e o código que esperava encontrar. Vamos usar essas informações para melhorar a sua experiência :)')
@@ -20,7 +17,7 @@ def app():
             datetime = dt.now() #date and time of search
             if submitted:
                 st.write('Sua sugestão foi recebida! Obrigado por contribuir!')
-                doc_ref = db.collection('feedback').document(feedback_id)
+                doc_ref = firestore_client.collection('feedback').document(feedback_id)
                 doc_ref.set({
                     'feedback id': feedback_id,
                     'text input': text,
@@ -28,7 +25,3 @@ def app():
                     'expected code': code_expected,
                     'sugestion': sugestion,
                 })
-                text = None
-                code_expected = None
-                sugestion = None
-            
