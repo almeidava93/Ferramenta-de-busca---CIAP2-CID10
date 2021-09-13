@@ -37,6 +37,8 @@ firestore_client = firestore.Client.from_service_account_info(service_account_in
 
 #IMPORTANT FUNCTIONS
 
+"""
+
 def load_data():
     df = pd.read_parquet("text.parquet", engine="pyarrow")
     ciap_list = list(df[['CIAP2_Código1', 'titulo original']].agg(" | ".join, axis=1).drop_duplicates())
@@ -46,7 +48,7 @@ def load_data():
     search_history = db.collection('search_history').stream()
     return df, ciap_list, db, bm25, search_history
 
-df, ciap_list, db, bm25, search_history = load_data()
+#df, ciap_list, db, bm25, search_history = load_data()
 
 class Database():
     TESAURO_DF = df
@@ -56,6 +58,8 @@ class Database():
     BM25 = bm25
     SEARCH_HISTORY = search_history
     SERVICE_ACCOUNT_INFO = service_account_info
+
+"""
 
 def load():
   #Load dataframe for code search

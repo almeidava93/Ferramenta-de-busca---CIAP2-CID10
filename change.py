@@ -4,6 +4,8 @@ import streamlit as st
 import uuid
 from tqdm import tqdm
 
+from database import *
+
 
 service_account_info = {
   "type": st.secrets['type'],
@@ -19,25 +21,31 @@ service_account_info = {
 }
 
 firestore_database_client = firestore.Client.from_service_account_info(service_account_info)
-tesauro = pd.read_parquet("text.parquet", engine="pyarrow")
+tesauro = pd.read_parquet("/Users/viniciusanjosdealmeida/Documents/GitHub/Busca-CID10/cid10_df_search.parquet", engine="pyarrow")
+
 
 def load_tesauro_dataframe(tesauro, firestore_database_client):
     tesauro_dict = tesauro.to_dict('records')
     for row in tqdm(tesauro_dict):
         id = str(uuid.uuid4())
         condition_id = "_".join(["condition_id", id])
-        doc_ref = firestore_database_client.collection('tesauro').document(condition_id)
+        doc_ref = firestore_database_client.collection('tesauro_cid').document(condition_id)
         doc_ref.set(row)
 
-#load_tesauro_dataframe(tesauro, firestore_database_client)
 
-doc_ref = firestore_database_client.collection('tesauro').where(field_path='text', op_string='==', value='Y81 | Fimose/prepucio redundante | fimose').get()
+
+load_tesauro_dataframe(tesauro, firestore_database_client)
+
+
+"""
+doc_ref = firestore_database_client.collection('tesauro').select(field_paths=['`CID10_Código1`']).get()
 data = [doc.to_dict() for doc in doc_ref]
 print(data)
 df = pd.DataFrame.from_records(data)
 print(df)
-"""
 
+
+"/Users/viniciusanjosdealmeida/Documents/GitHub/Busca-CID10/cid10_df_search.parquet"
 
 
 
