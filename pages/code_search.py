@@ -1,32 +1,22 @@
-import pandas as pd
-from tqdm import tqdm
-from rank_bm25 import BM25Okapi
 import time
-import pickle
-from unidecode import unidecode
 import streamlit as st
-from google.cloud import firestore
 import uuid
 from datetime import datetime as dt
-from database import Database
 
 #Custom packages
 from database import *
 
 def app():
-    DB = Database()
-    db = DB.DB
-    df = DB.TESAURO_DF
-
     with st.container():
         st.header('Ferramenta de busca')
         st.write('Digite abaixo a condição clínica que deseja codificar e nós encontraremos para você os melhores códigos CIAP2.')
-        input = st.text_input('Condição clínica ou motivo de consulta:')
-        n_results = st.number_input('Quantos códigos devemos mostrar?', value = 5, min_value=1, max_value=20, step=1, key=None, help='help arg')
+        col1, col2 = st.columns([3,1])
+        with col1:
+            input = st.text_input('Condição clínica ou motivo de consulta:')
+        with col2:
+            n_results = st.number_input('Número de resultados mostrados', value = 5, min_value=1, max_value=20, step=1, key=None, help='Número de resultados mostrados')
 
-    if input == "":
-        pass
-    else:
+    if input != "":
         t0 = time.time()
         selected_code = search_code(input, n_results)
         t1 = time.time()
@@ -48,7 +38,7 @@ def app():
         
 
         ##Saving data:
-        doc_ref = db.collection('search_history').document(search_id)
+        doc_ref = firestore_client.collection('search_history').document(search_id)
         doc_ref.set({
             'search id': search_id,
             'text input': input,
