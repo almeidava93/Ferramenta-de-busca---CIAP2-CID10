@@ -8,7 +8,7 @@ from pages import code_search, feedback, update_search # import your pages here
 app = MultiPage()
 
 # Title of the main page
-st.title("Codificação CIAP2")
+st.title("Codificação de condições clínicas")
 
 # Add all your applications (pages) here
 app.add_page("Ferramenta de busca", code_search.app)
