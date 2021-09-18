@@ -8,4 +8,4 @@ spacy
 firebase_admin
 jwt
 pydantic==1.7.4
-pip
+/home/appuser/venv/bin/python -m pip install --upgrade pip
