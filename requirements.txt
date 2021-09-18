@@ -7,4 +7,3 @@ datetime
 spacy
 firebase_admin
 jwt
-https://github.com/explosion/spacy-models/releases/download/pt_core_news_lg-3.0.0a0/pt_core_news_lg-3.0.0a0.tar.gz
