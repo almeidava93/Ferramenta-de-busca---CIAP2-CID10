@@ -16,7 +16,7 @@ import streamlit as st
 import pandas as pd
 from unidecode import unidecode
 from rank_bm25 import BM25Okapi
-import spacy
+import spacy_streamlit as spacy
 import uuid
 
 #Custom packages

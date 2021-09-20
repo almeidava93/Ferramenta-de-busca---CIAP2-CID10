@@ -2,7 +2,7 @@ import pandas as pd
 from google.cloud import firestore
 import streamlit as st
 from rank_bm25 import BM25Okapi
-import spacy
+import spacy_streamlit as spacy
 from unidecode import unidecode
 import streamlit as st
 import uuid
