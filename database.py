@@ -15,7 +15,7 @@ service_account_info = st.secrets["gcp_service_account_firestore"]
 firebase_storage_config = st.secrets["gcp_service_account"]
 
 
-@st.cache(hash_funcs={firestore.Client: id}, ttl=300, show_spinner=True)
+@st.cache(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True)
 def load_firestore_client(service_account_info = service_account_info):
   firestore_client = firestore.Client.from_service_account_info(service_account_info)
   return firestore_client
@@ -24,7 +24,7 @@ firestore_client = load_firestore_client() #Carrega a conexão com a base de dad
 
 
 
-@st.cache(hash_funcs={firestore.Client: id}, ttl=300, show_spinner=True, allow_output_mutation=True)
+@st.cache(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True, allow_output_mutation=True)
 def firestore_query(firestore_client = firestore_client, field_paths = [], collection = 'tesauro'):
   #Load dataframe for code search
   firestore_collection = firestore_client.collection(collection)
@@ -46,7 +46,7 @@ ciap_list = list(ciap_df)
 
 
 #Função que gera o índice BM25 para a busca e atualiza o arquivo
-@st.cache(ttl=300, show_spinner=True)
+@st.cache(ttl=None, show_spinner=True)
 def bm25_index(data = search_code_data['text']):
     #Launch the language object
     nlp = spacy.load("pt_core_news_lg")
@@ -79,7 +79,7 @@ def search_code(input, n_results, data = search_code_data, bm25=bm25):
         selected_code = st.radio('Esses são os códigos que encontramos. Selecione um para prosseguir.', results, index=0, help='Selecione um dos códigos para prosseguir.')
         return selected_code
 
-@st.cache(ttl=300, show_spinner=True)
+@st.cache(ttl=None, show_spinner=True)
 def join_columns(dataframe, column_names, delimiter=' | ', drop_duplicates=False):
   df = dataframe[column_names].agg(delimiter.join, axis=1)
   if drop_duplicates==True: df.drop_duplicates()
@@ -87,7 +87,7 @@ def join_columns(dataframe, column_names, delimiter=' | ', drop_duplicates=False
 
 
 #Função que remove caracteres especiais de uma coluna de um dataframe
-@st.cache(ttl=300, show_spinner=True)
+@st.cache(ttl=None, show_spinner=True)
 def unidecode_df(dataframe, column_names):
   return dataframe[column_names].apply(lambda x: unidecode(x))
 
