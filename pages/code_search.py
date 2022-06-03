@@ -16,7 +16,7 @@ def cid_search():
             with col1:
                 input = st.text_input('Condição clínica ou motivo de consulta:')
             with col2:
-                n_results = st.number_input('Número de resultados mostrados', value = 5, min_value=1, max_value=20, step=1, key=None, help='Número de resultados mostrados')
+                n_results = st.number_input('Número de resultados mostrados', value = 5, min_value=1, max_value=1000, step=1, key=None, help='Número de resultados mostrados')
     if input != "":
             t0 = time.time()
             selected_code = search_code(input, n_results, data = search_code_data_cid_multiselect, bm25=bm25_cid)
