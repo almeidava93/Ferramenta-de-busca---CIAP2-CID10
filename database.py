@@ -67,6 +67,7 @@ bm25 = bm25_index()
 
 
 #Função que retorna o código escolhido
+@st.cache(ttl=None, show_spinner=True)
 def search_code(input, n_results, data = search_code_data, bm25=bm25):
     if input != "":
         #Generate search index
