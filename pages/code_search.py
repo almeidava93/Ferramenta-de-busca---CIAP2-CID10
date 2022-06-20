@@ -24,7 +24,7 @@ def cid_search():
             n_records = len(search_code_data_cid)
             search_time = round(t1-t0,3)
             st.text(f'Searched {n_records} records in {search_time} seconds \n')
-            save_search(input, search_time, n_records, n_results, selected_code, collection_name='search_history_cid')
+            save_search(input, n_records, n_results, selected_code, collection_name='search_history_cid')
 
 
 def ciap_search():
