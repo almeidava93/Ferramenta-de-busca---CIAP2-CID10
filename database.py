@@ -103,7 +103,7 @@ bm25_cid = bm25_index(data = search_code_data_cid['text'])
 
 
 #Função que salva os dados na base de dados
-@st.cache(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True)
+#@st.cache(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True)
 def save_search(text_input, n_records, n_results, selected_code, collection_name, firestore_client=firestore_client):
   #input -> text input for code search
   #n_records -> number of records searched
