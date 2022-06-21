@@ -159,4 +159,5 @@ st.markdown("""
 
 
 #OTHER VARIABLES
-ciap_search()
+def app():
+  ciap_search()
