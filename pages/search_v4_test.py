@@ -81,9 +81,12 @@ def bm25_index(data = df['text']):
     text_list = data.str.lower().values
     tok_text=[] # for our tokenised corpus
     #Tokenising using SpaCy:
+    punc = '''!()-[]\{\};:'"\,<>./?@#$%^&*_~''' # Punctuations
     for doc in nlp.pipe(text_list, disable=["tagger", "parser","ner"]):
-        tok = [t.text for t in doc]
-        tok_text.append(tok)
+      for symbol in punc:
+        doc = doc.text.replace(symbol,' ')
+      tok = [t.text for t in doc]
+      tok_text.append(tok)
     #Building a BM25 index
     bm25 = BM25Okapi(tok_text)
     return bm25
@@ -97,6 +100,9 @@ def search_code(input, n_results, data = df, bm25=bm25):
         #Querying this index just requires a search input which has also been tokenized:
         revised_input = spell_check_input(input) #corrige possíveis erros de grafia no input
         decoded_input = unidecode(revised_input) #remove acentos e caracteres especiais
+        punc = '''!()-[]\{\};:'"\,<>./?@#$%^&*_~''' # Punctuations
+        for symbol in punc:
+          decoded_input = decoded_input.replace(symbol,' ')
         tokenized_query = decoded_input.lower().split(" ")
         results = bm25.get_top_n(tokenized_query, data['text'].values, n=n_results)
         results = [i for i in results]
