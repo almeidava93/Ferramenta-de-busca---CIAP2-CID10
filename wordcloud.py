@@ -62,7 +62,6 @@ words = []
 for index, value in series.items():
     word_dict = {"text":index, "value":value}
     words.append(word_dict)
-print(words)
 
 return_obj = wordcloud.visualize(words, tooltip_data_fields={
     'text':'Search', 'value':'N of searches'}, per_word_coloring=False, height="550px", layout='archimedean', font_min=16, palette='plasma')

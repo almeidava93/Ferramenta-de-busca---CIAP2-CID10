@@ -123,7 +123,7 @@ def spell_check_input(input):
   tokenized_query = input.lower().split(" ")
   for word in tokenized_query:
       # Get the one `most likely` answer
-      revised_input += spell.correction(word)
+      revised_input += " " + spell.correction(word)
   return revised_input
 
 def ciap_search():
