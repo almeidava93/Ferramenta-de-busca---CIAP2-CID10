@@ -117,6 +117,10 @@ def search_code(input, n_results, data = df, bm25=bm25):
 
 # Prepare spellchecking function:
 spell = SpellChecker(language='pt')
+ciap_df = firestore_query(field_paths=['`CIAP2_Código1`', '`titulo original`']).drop_duplicates()
+spell.known([code[0] for code in ciap_df.to_numpy().tolist()])
+spell.known([code[0].lower() for code in ciap_df.to_numpy().tolist()])
+
 def spell_check_input(input):
   revised_input = []
   tokenized_query = input.lower().split(" ")
