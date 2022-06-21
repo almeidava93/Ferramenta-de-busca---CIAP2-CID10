@@ -128,7 +128,7 @@ def spell_check_input(input):
 
 def ciap_search():
     with st.container():
-        st.header('Ferramenta de busca de CIAP 2')
+        st.header('Nova versão da busca de CIAP2')
         st.write('Digite abaixo a condição clínica que deseja codificar e nós encontraremos para você os melhores códigos CIAP2.')
         col1, col2 = st.columns([3,1])
         with col1:
