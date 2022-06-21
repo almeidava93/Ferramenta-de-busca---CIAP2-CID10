@@ -124,7 +124,7 @@ def spell_check_input(input):
   for word in tokenized_query:
       # Get the one `most likely` answer
       revised_input += spell.correction(word)
-      return revised_input
+  return revised_input
 
 def ciap_search():
     with st.container():
