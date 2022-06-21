@@ -74,7 +74,7 @@ df = firestore_query(field_paths=['`CIAP2_Código1`', '`titulo original`','`Term
 df['text'] = df['Termo Português'].copy().apply(lambda x: unidecode(x))
 
 @st.cache(hash_funcs={firestore.Client: id}, ttl=86400, show_spinner=True, persist=True)
-def bm25_index(data = df['text']):
+def bm25_index_(data = df['text']):
     #Launch the language object
     nlp = spacy.load("pt_core_news_lg")
     #Preparing for tokenisation
@@ -88,7 +88,7 @@ def bm25_index(data = df['text']):
     bm25 = BM25Okapi(tok_text)
     return bm25
 
-bm25 = bm25_index()
+bm25 = bm25_index_()
 
 def search_code(input, n_results, data = df, bm25=bm25):
     if input != "":
