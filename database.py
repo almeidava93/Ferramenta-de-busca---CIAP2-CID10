@@ -47,7 +47,7 @@ ciap_list = list(ciap_df)
 
 #Função que gera o índice BM25 para a busca e atualiza o arquivo
 @st.cache(ttl=None, show_spinner=True)
-def bm25_index(data = search_code_data['text']):
+def bm25_index(data = search_code_data['text'].astype(str)):
     #Launch the language object
     nlp = spacy.load("pt_core_news_lg")
     #Preparing for tokenisation
