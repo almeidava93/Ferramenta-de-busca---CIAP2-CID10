@@ -107,7 +107,6 @@ def search_code(input, n_results, data = df, bm25=bm25):
           results_df = pd.concat([results_df, row])
         results_df = results_df.groupby(['CIAP2_Código1'], as_index = False, sort=False).agg({'titulo original': 'first', 'Termo Português': ' | '.join})
         results_df['CIAP2'] = join_columns(results_df, ['CIAP2_Código1','titulo original'], delimiter=' | ', drop_duplicates=False)
-        input = spell_check_input(input)
         st.write(f'Resultados encontrados para: **{revised_input}**')
         for row in results_df[['CIAP2', 'Termo Português']].to_numpy().tolist():
           with st.expander(f"{row[0]}"):
@@ -119,12 +118,12 @@ def search_code(input, n_results, data = df, bm25=bm25):
 # Prepare spellchecking function:
 spell = SpellChecker(language='pt')
 def spell_check_input(input):
-  revised_input = ""
+  revised_input = []
   tokenized_query = input.lower().split(" ")
   for word in tokenized_query:
       # Get the one `most likely` answer
-      revised_input += " " + spell.correction(word)
-  return revised_input
+      revised_input.append(spell.correction(word))
+  return " ".join(revised_input)
 
 def ciap_search():
     with st.container():
@@ -139,7 +138,6 @@ def ciap_search():
         t0 = time.time()
         results = search_code(input, n_results)
         t1 = time.time()
-        input = spell_check_input(input)
         #st.write(f'Resultados encontrados para: **{input}**')
         #st.dataframe(data=results.style.set_properties(**{'text-align': 'left', 'column-width': '500px'}), width=None, height=None)
         n_records = len(df)
