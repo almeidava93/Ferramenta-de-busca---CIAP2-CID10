@@ -7,4 +7,5 @@ datetime
 spacy
 firebase_admin
 jwt
+spellchecker
 https://github.com/explosion/spacy-models/releases/download/pt_core_news_lg-3.2.0/pt_core_news_lg-3.2.0.tar.gz
