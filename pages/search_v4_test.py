@@ -47,6 +47,18 @@ def join_columns(dataframe, column_names, delimiter=' | ', drop_duplicates=False
 def unidecode_df(dataframe, column_name):
   return dataframe[column_name].apply(lambda x: unidecode(x))
 
+spell = SpellChecker(language='pt')
+ciap_df = firestore_query(field_paths=['`CIAP2_Código1`', '`titulo original`']).drop_duplicates()
+spell.word_frequency.load_words([code[0] for code in ciap_df.to_numpy().tolist()])
+spell.word_frequency.load_words([code[0].lower() for code in ciap_df.to_numpy().tolist()])
+
+def spell_check_input(input):
+  revised_input = []
+  tokenized_query = input.lower().split(" ")
+  for word in tokenized_query:
+      # Get the one `most likely` answer
+      revised_input.append(spell.correction(word))
+  return " ".join(revised_input)
 
 #Função que salva os dados na base de dados
 #@st.cache(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True)
@@ -114,20 +126,6 @@ def search_code(input, n_results, data = df, bm25=bm25):
 
           #st.write(f"**{row[0]}** - _{row[1]}_")
         return results_df[['CIAP2', 'Termo Português']]
-
-# Prepare spellchecking function:
-spell = SpellChecker(language='pt')
-ciap_df = firestore_query(field_paths=['`CIAP2_Código1`', '`titulo original`']).drop_duplicates()
-spell.known([code[0] for code in ciap_df.to_numpy().tolist()])
-spell.known([code[0].lower() for code in ciap_df.to_numpy().tolist()])
-
-def spell_check_input(input):
-  revised_input = []
-  tokenized_query = input.lower().split(" ")
-  for word in tokenized_query:
-      # Get the one `most likely` answer
-      revised_input.append(spell.correction(word))
-  return " ".join(revised_input)
 
 def ciap_search():
     with st.container():
