@@ -49,8 +49,8 @@ def unidecode_df(dataframe, column_name):
 
 spell = SpellChecker(language='pt')
 ciap_df = firestore_query(field_paths=['`CIAP2_Código1`', '`titulo original`']).drop_duplicates()
-spell.word_frequency.load_words([code[0] for code in ciap_df.to_numpy().tolist()])
-spell.word_frequency.load_words([code[0].lower() for code in ciap_df.to_numpy().tolist()])
+spell.word_frequency.load_words([code[1] for code in ciap_df.to_numpy().tolist()])
+spell.word_frequency.load_words([code[1].lower() for code in ciap_df.to_numpy().tolist()])
 
 def spell_check_input(input):
   revised_input = []
