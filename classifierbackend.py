@@ -130,9 +130,5 @@ def gen_similarity(word):
     print(results)
 
 test_matcher("""
-Início de tosse desde 20 de maio. De sintomas associados apenas uma indisposição, mas que não evoluiu para nenhum outro sintoma. Nega falta de ar, febre ou outros sintomas associados.  
-
-AF de fibrose pulmonar idiopática
-
-Teve contato com amigo recentemente que teve diagnóstico de covid-19
+mal estar
 """)
