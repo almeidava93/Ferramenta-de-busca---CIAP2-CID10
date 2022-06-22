@@ -1,11 +1,3 @@
-unidecode
-rank_bm25
-streamlit
-google-cloud-firestore
-uuid
-datetime
-spacy
-firebase_admin
-jwt
-pyspellchecker
-https://github.com/explosion/spacy-models/releases/download/pt_core_news_lg-3.2.0/pt_core_news_lg-3.2.0.tar.gz
+version https://git-lfs.github.com/spec/v1
+oid sha256:a7380b8326719b08f873a7c5a76a74ce67f16b3d9ae84e12a85203e440701c36
+size 217

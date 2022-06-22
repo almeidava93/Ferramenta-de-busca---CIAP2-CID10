@@ -13,6 +13,7 @@ st.title("Codificação de condições clínicas")
 # Add all your applications (pages) here
 app.add_page("CIAP2 - Nova versão", search_v4_test.app)
 app.add_page("Ferramenta de busca", code_search.app)
+app.add_page("Codificador de motivos de consulta", classifier.app)
 app.add_page("Não encontrou?", feedback.app)
 app.add_page("Atualize o tesauro", update_search.app)
 
