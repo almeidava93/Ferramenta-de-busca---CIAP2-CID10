@@ -68,5 +68,3 @@ def app():
             t1 = time.time()
             search_time = round(t1-t0,3)
             st.text(f'Texto analisado em {search_time} seconds \n')
-
-app()
