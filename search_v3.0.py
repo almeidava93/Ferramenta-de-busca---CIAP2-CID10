@@ -2,7 +2,7 @@ import streamlit as st
 
 # Custom imports 
 from multipage import MultiPage
-from pages import code_search, feedback, update_search, search_v4_test # import your pages here
+from pages import code_search, feedback, update_search, search_v4_test, classifier # import your pages here
 
 # Create an instance of the app 
 app = MultiPage()
