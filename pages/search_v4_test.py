@@ -10,7 +10,8 @@ from datetime import datetime as dt
 from spellchecker import SpellChecker
 import time
 
-
+#Custom packages
+from database import *
 
 #IMPORTANT VARIABLES TO BE USED
 service_account_info = st.secrets["gcp_service_account_firestore"]

@@ -69,6 +69,7 @@ for label in tqdm(labels):
     patterns = [nlp(text) for text in phrases]
     matcher.add(label, patterns)
 
+
 #Saving matcher data for future use
 pickle_out = open("matcher.pickle","wb")
 pickle.dump(matcher, pickle_out)

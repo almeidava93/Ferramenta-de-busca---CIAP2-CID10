@@ -11,6 +11,13 @@ import pandas as pd
 import pickle
 import time
 
+#Custom packages
+from database import *
+
+# Next steps:
+# - combine phrase matcher with matcher for more accuracy and generalizability in specific cases
+
+
 @st.cache(hash_funcs={spacy.vocab.Vocab: id}, ttl=None, show_spinner=True)
 def load_data():
     pickle_in = open("matcher.pickle","rb")
