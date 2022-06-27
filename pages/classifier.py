@@ -69,6 +69,12 @@ patterns = [
 ]
 matcher2.add(label, patterns)
 
+label = 'L08' # Ex.: dor ombro, desconforto ombro
+patterns = [
+    [{'LEMMA': {'IN':['dor', 'desconforto', 'incomodo']}}, {'OP':'?'}, {'OP':'?'}, {'OP':'?'}, {'LEMMA': {'IN':['ombro']}}]
+]
+matcher2.add(label, patterns)
+
 label = 'L15' # Ex.: dor joelho, desconforto no joelho
 patterns = [
     [{'LEMMA': {'IN':['dor', 'desconforto', 'incomodo', 'tensão']}}, {'OP':'?'}, {'OP':'?'}, {'OP':'?'}, {'LEMMA': {'IN':['joelho', 'patela']}}]
