@@ -51,6 +51,30 @@ patterns = [
 ]
 matcher2.add(label, patterns)
 
+label = 'L01' # Ex.: dor pescoço, desconforto, incômodo, tensão
+patterns = [
+    [{'LEMMA': {'IN':['dor', 'desconforto', 'incomodo', 'tensão']}}, {'OP':'?'}, {'OP':'?'}, {'OP':'?'}, {'LEMMA': {'IN':['pescoço']}}]
+]
+matcher2.add(label, patterns)
+
+label = 'L02' # Ex.: dor nas costas, na dorsal, no dorso
+patterns = [
+    [{'LEMMA': {'IN':['dor', 'desconforto', 'incomodo', 'tensão']}}, {'OP':'?'}, {'OP':'?'}, {'OP':'?'}, {'LEMMA': {'IN':['costas', 'dorsal', 'dorso']}}]
+]
+matcher2.add(label, patterns)
+
+label = 'L03' # Ex.: dor lombar, desconforto na lombar, na coluna lombar
+patterns = [
+    [{'LEMMA': {'IN':['dor', 'desconforto', 'incomodo']}}, {'OP':'?'}, {'OP':'?'}, {'OP':'?'}, {'LEMMA': {'IN':['lombar']}}]
+]
+matcher2.add(label, patterns)
+
+label = 'L15' # Ex.: dor joelho, desconforto no joelho
+patterns = [
+    [{'LEMMA': {'IN':['dor', 'desconforto', 'incomodo', 'tensão']}}, {'OP':'?'}, {'OP':'?'}, {'OP':'?'}, {'LEMMA': {'IN':['joelho', 'patela']}}]
+]
+matcher2.add(label, patterns)
+
 label = 'L80' # Ex.: luxação/luxou patela, ombro etc
 patterns = [
     [{'LEMMA': {'IN':['luxar', 'luxacao', 'luxação']}}, {'OP':'?'}, {'OP':'?'}, {'OP':'?'}, {'POS': 'NOUN'}]
