@@ -124,7 +124,7 @@ def join_columns(dataframe, column_names, delimiter=' | ', drop_duplicates=False
   return df
 
 def test_matcher(text):
-    #text = unidecode(text)
+    text = unidecode(text)
     doc = nlp(text)
     matches1 = matcher1(doc)
     ents = []
