@@ -110,7 +110,7 @@ def search_code(input, n_results, data = df, bm25=bm25):
         #bm25 = bm25_index()
         #Querying this index just requires a search input which has also been tokenized:
         revised_input = spell_check_input(input) #corrige possíveis erros de grafia no input
-        decoded_input = unidecode(revised_input) #remove acentos e caracteres especiais
+        decoded_input = unidecode(input) #remove acentos e caracteres especiais
         tokenized_query = decoded_input.lower().split(" ")
         results = bm25.get_top_n(tokenized_query, data['text'].values, n=n_results)
         results = [i for i in results]
