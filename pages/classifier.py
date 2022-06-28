@@ -69,15 +69,51 @@ patterns = [
 ]
 matcher2.add(label, patterns)
 
+label = 'L04' # Ex.: dor torácica, desconforto
+patterns = [
+    [{'LEMMA': {'IN':['dor', 'desconforto', 'incomodo', 'aperto', 'opressao']}}, {'OP':'?'}, {'OP':'?'}, {'OP':'?'}, {'LEMMA': {'IN':['peito', 'torax', 'toracico', 'toracica', 'toracicos', 'toracicas']}}]
+]
+matcher2.add(label, patterns)
+
+label = 'L05' # Ex.: dor axilar, desconforto na axila
+patterns = [
+    [{'LEMMA': {'IN':['dor', 'desconforto', 'incomodo']}}, {'OP':'*'}, {'LEMMA': {'IN':['axila', 'axilar']}}]
+]
+matcher2.add(label, patterns)
+
+label = 'L07' # Ex.: dor mandíbula
+patterns = [
+    [{'LEMMA': {'IN':['dor', 'desconforto', 'incomodo']}}, {'OP':'*'}, {'LEMMA': {'IN':['mandíbula', 'mandibula', 'mandibular', 'ATM', 'temporo-mandibular']}}]
+]
+matcher2.add(label, patterns)
+
 label = 'L08' # Ex.: dor ombro, desconforto ombro
 patterns = [
-    [{'LEMMA': {'IN':['dor', 'desconforto', 'incomodo']}}, {'OP':'?'}, {'OP':'?'}, {'OP':'?'}, {'LEMMA': {'IN':['ombro']}}]
+    [{'LEMMA': {'IN':['dor', 'desconforto', 'incomodo']}}, {'OP':'*'}, {'LEMMA': {'IN':['ombro']}}]
+]
+matcher2.add(label, patterns)
+
+label = 'L09' # Ex.: dor braço
+patterns = [
+    [{'LEMMA': {'IN':['dor', 'desconforto', 'incomodo']}}, {'OP':'*'}, {'LEMMA': {'IN':['braço', 'braco', 'bracos']}}]
+]
+matcher2.add(label, patterns)
+
+label = 'L10' # Ex.: dor cotovelo
+patterns = [
+    [{'LEMMA': {'IN':['dor', 'desconforto', 'incomodo']}}, {'OP':'*'}, {'LEMMA': {'IN':['cotovelo']}}]
+]
+matcher2.add(label, patterns)
+
+label = 'L11' # Ex.: dor punho
+patterns = [
+    [{'LEMMA': {'IN':['dor', 'desconforto', 'incomodo']}}, {'OP':'*'}, {'LEMMA': {'IN':['punho']}}]
 ]
 matcher2.add(label, patterns)
 
 label = 'L15' # Ex.: dor joelho, desconforto no joelho
 patterns = [
-    [{'LEMMA': {'IN':['dor', 'desconforto', 'incomodo', 'tensão']}}, {'OP':'?'}, {'OP':'?'}, {'OP':'?'}, {'LEMMA': {'IN':['joelho', 'patela']}}]
+    [{'LEMMA': {'IN':['dor', 'desconforto', 'incomodo', 'tensão']}}, {'OP':'*'}, {'LEMMA': {'IN':['joelho', 'patela']}}]
 ]
 matcher2.add(label, patterns)
 
