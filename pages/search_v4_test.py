@@ -137,7 +137,7 @@ def ciap_search():
         with col1:
             input = st.text_input('Condição clínica ou motivo de consulta:')
         with col2:
-            n_results = st.number_input('N resultados', value = 5, min_value=1, max_value=20, step=1, key=None, help='Número de resultados mostrados')
+            n_results = st.number_input('N resultados', value = 5, min_value=1, max_value=100, step=1, key=None, help='Número de resultados mostrados')
     if input != "":
         t0 = time.time()
         results = search_code(input, n_results)
