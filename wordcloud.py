@@ -42,8 +42,8 @@ st.markdown(
         """
     <style>
     svg {
-        height: 100%;
-        width: 100%;
+        height: 100% !important;
+        width: 100% !important;
     }
     </style>    
     """,
@@ -64,4 +64,6 @@ for index, value in series.items():
     words.append(word_dict)
 
 return_obj = wordcloud.visualize(words, tooltip_data_fields={
-    'text':'Search', 'value':'N of searches'}, per_word_coloring=False, height="550px", layout='archimedean', font_min=16, palette='plasma')
+    'text':'Search', 'value':'N of searches'}, per_word_coloring=False, height="550px", layout='archimedean', font_min=16, palette='plasma', max_words=200)
+
+print('acabou!')

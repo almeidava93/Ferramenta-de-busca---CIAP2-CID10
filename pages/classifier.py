@@ -85,13 +85,13 @@ matcher2.add(label, patterns)
 
 label = 'L07' # Ex.: dor mandíbula
 patterns = [
-    [{'LEMMA': {'IN':['dor', 'desconfortar', 'incomodar', 'tensao', 'disfuncao']}}, {'OP':'*', 'LEMMA':{'NOT_IN':['dor', '.', 'desconfortar', 'incomodar', 'tensão', 'tensao', 'disfuncao']}}, {'LEMMA': {'IN':['mandíbula', 'mandibula', 'mandibular', 'ATM', 'temporo-mandibular']}}]
+    [{'LEMMA': {'IN':['dor', 'desconfortar', 'incomodar', 'tensao', 'disfuncao', 'derrame', 'edema', 'tumefacao', 'inchaco', 'rigidez']}}, {'OP':'*', 'LEMMA':{'NOT_IN':['dor', '.', 'desconfortar', 'incomodar', 'tensão', 'tensao', 'disfuncao', 'derrame', 'edema', 'tumefacao', 'inchaco', 'rigidez']}}, {'LEMMA': {'IN':['mandíbula', 'mandibula', 'mandibular', 'ATM', 'temporo-mandibular']}}]
 ]
 matcher2.add(label, patterns)
 
 label = 'L08' # Ex.: dor ombro, desconforto ombro
 patterns = [
-    [{'LEMMA': {'IN':['dor', 'desconfortar', 'incomodar', 'inchaco', 'rigidez']}}, {'OP':'*', 'LEMMA':{'NOT_IN':['dor', '.', 'desconfortar', 'incomodar', 'tensão', 'tensao', 'inchaco', 'rigidez']}}, {'LEMMA': {'IN':['ombro', 'acromioclavicular', 'esternoclavicular']}}]
+    [{'LEMMA': {'IN':['dor', 'desconfortar', 'incomodar', 'inchaco', 'rigidez', 'derrame', 'edema', 'tumefacao']}}, {'OP':'*', 'LEMMA':{'NOT_IN':['dor', '.', 'desconfortar', 'incomodar', 'tensão', 'tensao', 'inchaco', 'rigidez']}}, {'LEMMA': {'IN':['ombro', 'acromioclavicular', 'esternoclavicular']}}]
 ]
 matcher2.add(label, patterns)
 
@@ -103,19 +103,19 @@ matcher2.add(label, patterns)
 
 label = 'L10' # Ex.: dor cotovelo
 patterns = [
-    [{'LEMMA': {'IN':['dor', 'desconfortar', 'incomodar']}}, {'OP':'*', 'LEMMA':{'NOT_IN':['dor', '.', 'desconfortar', 'incomodar', 'tensão', 'tensao']}}, {'LEMMA': {'IN':['cotovelo']}}]
+    [{'LEMMA': {'IN':['dor', 'desconfortar', 'incomodar', 'derrame', 'edema', 'tumefacao', 'inchaco', 'rigidez']}}, {'OP':'*', 'LEMMA':{'NOT_IN':['dor', '.', 'desconfortar', 'incomodar', 'tensão', 'tensao', 'derrame', 'edema', 'tumefacao', 'inchaco', 'rigidez']}}, {'LEMMA': {'IN':['cotovelo']}}]
 ]
 matcher2.add(label, patterns)
 
 label = 'L11' # Ex.: dor punho
 patterns = [
-    [{'LEMMA': {'IN':['dor', 'desconfortar', 'incomodar']}}, {'OP':'*', 'LEMMA':{'NOT_IN':['dor', '.', 'desconfortar', 'incomodar', 'tensão', 'tensao']}}, {'LEMMA': {'IN':['punho']}}]
+    [{'LEMMA': {'IN':['dor', 'desconfortar', 'incomodar', 'derrame', 'edema', 'tumefacao', 'inchaco', 'rigidez']}}, {'OP':'*', 'LEMMA':{'NOT_IN':['dor', '.', 'desconfortar', 'incomodar', 'tensão', 'tensao', 'derrame', 'edema', 'tumefacao', 'inchaco', 'rigidez']}}, {'LEMMA': {'IN':['punho']}}]
 ]
 matcher2.add(label, patterns)
 
 label = 'L15' # Ex.: dor joelho, desconforto no joelho
 patterns = [
-    [{'LEMMA': {'IN':['dor', 'desconfortar', 'incomodar', 'tensão', 'tensao']}}, {'OP':'*', 'LEMMA':{'NOT_IN':['dor', '.', 'desconfortar', 'incomodar', 'tensão', 'tensao']}}, {'LEMMA': {'IN':['joelho', 'joelhar', 'patela']}}]
+    [{'LEMMA': {'IN':['dor', 'desconfortar', 'incomodar', 'tensão', 'tensao', 'derrame', 'edema', 'tumefacao', 'inchaco', 'rigidez']}}, {'OP':'*', 'LEMMA':{'NOT_IN':['dor', '.', 'desconfortar', 'incomodar', 'tensão', 'tensao', 'derrame', 'edema', 'tumefacao', 'inchaco', 'rigidez']}}, {'LEMMA': {'IN':['joelho', 'joelhar', 'patela']}}]
 ]
 matcher2.add(label, patterns)
 
