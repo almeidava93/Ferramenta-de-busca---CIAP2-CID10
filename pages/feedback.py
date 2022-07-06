@@ -24,4 +24,5 @@ def app():
                     'timestamp': datetime,
                     'expected code': code_expected,
                     'sugestion': sugestion,
+                    'solved': False
                 })
