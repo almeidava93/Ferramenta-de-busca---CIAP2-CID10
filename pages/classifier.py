@@ -135,7 +135,7 @@ matcher2.add(label, patterns)
 
 label = 'P74' # Ex.: crise de ansiedade, crise ansiosa
 patterns = [
-    [{'LEMMA': {'IN': ['crise']}, 'POS': {'IN': ['NOUN']}}, {'OP':'*'}, {'LEMMA':{'IN': ['ansiedade', 'ansioso']}}]
+    [{'LEMMA': {'IN': ['crise']}, 'POS': {'IN': ['NOUN']}}, {'OP':'*', 'LEMMA':{'NOT_IN':['crise']}, 'IS_PUNCT': False}, {'LEMMA':{'IN': ['ansiedade', 'ansioso']}}]
 ]
 matcher2.add(label, patterns)
 
