@@ -24,7 +24,7 @@ firestore_client = load_firestore_client() #Carrega a conexão com a base de dad
 
 
 
-@st.cache(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True, allow_output_mutation=True)
+@st.cache(hash_funcs={firestore.Client: id}, ttl=86400, show_spinner=True, allow_output_mutation=True)
 def firestore_query(firestore_client = firestore_client, field_paths = [], collection = 'tesauro'):
   #Load dataframe for code search
   firestore_collection = firestore_client.collection(collection)
@@ -46,7 +46,7 @@ ciap_list = list(ciap_df)
 
 
 #Função que gera o índice BM25 para a busca e atualiza o arquivo
-@st.cache(ttl=None, show_spinner=True)
+@st.cache(ttl=86400, show_spinner=True)
 def bm25_index(data = search_code_data['text'].astype(str)):
     #Launch the language object
     nlp = spacy.load("pt_core_news_lg")

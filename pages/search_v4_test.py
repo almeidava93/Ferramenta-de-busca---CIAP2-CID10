@@ -27,7 +27,7 @@ firestore_client = load_firestore_client() #Carrega a conexão com a base de dad
 
 
 
-@st.cache(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True, allow_output_mutation=True)
+@st.cache(hash_funcs={firestore.Client: id}, ttl=86400, show_spinner=True, allow_output_mutation=True)
 def firestore_query(firestore_client = firestore_client, field_paths = [], collection = 'tesauro'):
   #Load dataframe for code search
   firestore_collection = firestore_client.collection(collection)
@@ -121,7 +121,7 @@ def search_code(input, n_results, data = df, bm25=bm25):
           results_df = pd.concat([results_df, row])
         results_df = results_df.groupby(['CIAP2_Código1'], as_index = False, sort=False).agg({'titulo original': 'first', 'Termo Português': ' | '.join})
         results_df['CIAP2'] = join_columns(results_df, ['CIAP2_Código1','titulo original'], delimiter=' | ', drop_duplicates=False)
-        st.write(f'Resultados encontrados para: **{revised_input}**')
+        st.write(f'Resultados encontrados para: **{input}**')
         for row in results_df[['CIAP2', 'Termo Português']].to_numpy().tolist():
           with st.expander(f"{row[0]}"):
             st.write(f"_{row[1]}_")
