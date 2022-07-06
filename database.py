@@ -24,7 +24,7 @@ firestore_client = load_firestore_client() #Carrega a conexão com a base de dad
 
 
 
-@st.cache(hash_funcs={firestore.Client: id}, ttl=86400, show_spinner=True, allow_output_mutation=True)
+@st.cache(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True, allow_output_mutation=True)
 def firestore_query(firestore_client = firestore_client, field_paths = [], collection = 'tesauro'):
   #Load dataframe for code search
   firestore_collection = firestore_client.collection(collection)
