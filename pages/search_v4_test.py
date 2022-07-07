@@ -27,7 +27,7 @@ firestore_client = load_firestore_client() #Carrega a conexão com a base de dad
 
 
 
-@st.cache(hash_funcs={firestore.Client: id}, ttl=86400, show_spinner=True, allow_output_mutation=True)
+@st.cache(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True, allow_output_mutation=True)
 def firestore_query(firestore_client = firestore_client, field_paths = [], collection = 'tesauro'):
   #Load dataframe for code search
   firestore_collection = firestore_client.collection(collection)
@@ -87,7 +87,7 @@ def save_search(text_input, n_records, n_results, selected_code, collection_name
 df = firestore_query(field_paths=['`CIAP2_Código1`', '`titulo original`','`Termo Português`'])
 df['text'] = df['Termo Português'].copy().apply(lambda x: unidecode(x))
 
-@st.cache(hash_funcs={firestore.Client: id}, ttl=86400, show_spinner=True, persist=True)
+@st.cache(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True, persist=True)
 def bm25_index_(data = df['text']):
     #Launch the language object
     nlp = spacy.load("pt_core_news_lg")
