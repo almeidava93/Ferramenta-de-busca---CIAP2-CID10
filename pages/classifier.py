@@ -59,6 +59,13 @@ def prepare_matcher():
     ]
     matcher2.add(label, patterns)
 
+    label = 'K85' # Ex.: pico hipertensivo
+    patterns = [
+        [{'LEMMA': 'pico', 'POS': 'NOUN', 'DEP': 'obj'}, {'LEMMA': 'hipertensivo', 'POS': 'ADJ', 'DEP': 'amod'}],
+        [{'LEMMA': 'descontrolar', 'POS': {'IN': ['NOUN', 'VERB']}}, {'OP': '*', 'IS_PUNCT': False}, {'LEMMA': {'IN': ['pressão', 'pressao']}}]
+    ]
+    matcher2.add(label, patterns)
+
     label = 'L01' # Ex.: dor pescoço, desconforto, incômodo, tensão
     patterns = [
         [{'LEMMA': {'IN':['dor', 'desconfortar', 'incomodar', 'tensão', 'rigidez']}}, {'OP':'*', 'LEMMA':{'NOT_IN':['dor', '.', 'desconfortar', 'incomodar', 'tensão', 'tensao', 'rigidez']}}, {'LEMMA': {'IN':['coluna']}, 'OP': '?'}, {'LEMMA': {'IN':['pescoço', 'cervical']}}]
@@ -143,18 +150,20 @@ def prepare_matcher():
     patterns = [
         [{'LEMMA': {'IN': ['sentir']}}, {'LEMMA': {'IN': ['agitar', 'nervoso']}}]
     ]
+    matcher2.add(label, patterns)
     
     label = 'P15' # Ex.: etilismo, consumo de álcool
     patterns = [
         [{'LEMMA':{'IN': ['consumir']}}, {'OP':'*', 'IS_PUNCT': False}, {'LEMMA':{'IN': ['álcool', 'alcool']}}],
         [{'LEMMA':{'IN': ['consumir']}}, {'OP':'*', 'IS_PUNCT': False}, {'LEMMA':{'IN': ['bebido']}}, {'LEMMA':{'IN': ['alcoolica','alcoolicas']}}]
     ]
+    matcher2.add(label, patterns)
 
     label = 'P17' # Ex.: tabagismo, consumo de cigarro
     patterns = [
         [{'LEMMA':{'IN': ['consumir']}}, {'OP':'*', 'IS_PUNCT': False}, {'LEMMA':{'IN': ['cigarrar']}}]
     ]
-
+    matcher2.add(label, patterns)
 
     label = 'P74' # Ex.: crise de ansiedade, crise ansiosa
     patterns = [
@@ -185,6 +194,12 @@ def prepare_matcher():
     label = 'S23' # Ex.: queda de cabelo
     patterns = [
         [{'LEMMA': 'cabelo', 'POS': 'NOUN'}, {'OP':'*'}, {'LEMMA': {'IN': ['cair']},'POS': 'VERB'}]
+    ]
+    matcher2.add(label, patterns)
+
+    label = 'T07' # Ex.: ganho de peso, aumento de peso
+    patterns = [
+        [{'LEMMA': {'IN':['aumentar', 'ganhar']}, 'POS': {'IN':['NOUN', 'VERB']}}, {'OP':'*'}, {'LEMMA': {'IN': ['peso']},'POS':{'IN': ['NOUN']}, 'DEP': 'nmod'}]
     ]
     matcher2.add(label, patterns)
 
