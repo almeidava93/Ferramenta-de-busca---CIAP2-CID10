@@ -62,7 +62,7 @@ def prepare_matcher():
     label = 'K85' # Ex.: pico hipertensivo
     patterns = [
         [{'LEMMA': 'pico', 'POS': 'NOUN', 'DEP': 'obj'}, {'LEMMA': 'hipertensivo', 'POS': 'ADJ', 'DEP': 'amod'}],
-        [{'LEMMA': 'descontrolar', 'POS': {'IN': ['NOUN', 'VERB']}}, {'OP': '*', 'IS_PUNCT': False}, {'LEMMA': {'IN': ['pressão', 'pressao']}}]
+        [{'LEMMA': 'descontrolar', 'POS': {'IN': ['NOUN', 'VERB']}}, {'OP': '*'}, {'LEMMA': {'IN': ['pressão', 'pressao']}}]
     ]
     matcher2.add(label, patterns)
 
